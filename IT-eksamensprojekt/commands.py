@@ -142,3 +142,20 @@ def points_roulette(text, user):
             print "Gamble amount", gamble_point_amount
             print "Users points", user_point_amount
             post_message("Der opstod en fejl :feelsbadman:")
+            
+def leaderboard():
+         if text.split()[0] == "roulette":
+                  n_one = ['nobody', 0]
+                  n_two = ['nobody', 0]
+                  n_three = ['nobody', 0]
+                  points_all = points.get_points()
+                  for user in points_all:
+                           if points_all[user] > n_one[1]:
+                                    n_three, n_two, n_one = n_two, n_one, [user, points_all[user]]
+                           elif points_all[user] > n_two[1]:
+                                    n_three, n_two = n_two, [user, points_all[user]]
+                           elif points_all[user] > n_three[1]:
+                                    n_three = [user, points_all[user]]
+                  post_message('1. ' + str(n_one[0]) + ':' + ' ' + str(n_one[1])
+                  post_message('2. ' + str(n_two[0]) + ':' + ' ' + str(n_two[1])
+                  post_message('3. ' + str(n_three[0]) + ':' + ' ' + str(n_three[1])
